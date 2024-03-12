@@ -26,8 +26,3 @@ export class LoginEffect {
 
   constructor(private actions$: Actions, private authService: AuthService) { }
 }
-
-//dpjojahowhawwhdow@mail.com
-//dkjahksadhkahdakudhduahasds
-
-//hdsuaiuhduashdiuhsddsd@gmail,com

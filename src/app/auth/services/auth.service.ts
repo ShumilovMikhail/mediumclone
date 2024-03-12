@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 
 import { RegisterRequestInterface } from "../types/registerRequest.interface";
 import { CurrentUserInterface } from "../../shared/types/currentUser.interface";
-import { Observable, map } from "rxjs";
+import { Observable, catchError, map, tap } from "rxjs";
 import { environment } from "../../../environments/environment.development";
 import { AuthResponseInterface } from "../types/authResponse.interface";
 import { AuthModule } from "../auth.module";
@@ -24,9 +24,10 @@ export class AuthService {
   };
 
   public login(data: LoginRequestInterface): Observable<CurrentUserInterface> {
-    console.log(1)
     return this.http.post<AuthResponseInterface>(this.loginAPI, data).pipe(
-      map(({ user }) => user)
+      map((response) => {
+        return response.user
+      })
     );
   };
 

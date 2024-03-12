@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { EffectsModule } from '@ngrx/effects';
 import { TopBarModule } from './shared/top-bar/top-bar.module';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { AuthInterceptor } from './shared/services/auth-interceptor.service';
 
 @NgModule({
@@ -20,7 +20,7 @@ import { AuthInterceptor } from './shared/services/auth-interceptor.service';
     EffectsModule.forRoot([]),
     TopBarModule,
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useFactory: AuthInterceptor, multi: true },],
+  providers: [provideHttpClient(withInterceptors([AuthInterceptor]))],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

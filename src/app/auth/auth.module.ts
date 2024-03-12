@@ -1,6 +1,5 @@
-import { NgModule, effect, isDevMode } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { RegisterComponent } from './register/register.component';

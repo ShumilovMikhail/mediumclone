@@ -24,6 +24,5 @@ export class BackendErrorsMessages implements OnInit {
       case 'string':
         this.errorsMessages = [this.backendErrors]
     }
-    console.log(this.backendErrors)
   }
 }

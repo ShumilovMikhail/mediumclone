@@ -37,7 +37,6 @@ const authReducer = createReducer(
   }),
   on(registerFailureAction,
     (state, payload: { errors: BackendErrorsInterface }): AuthStateInterface => {
-      console.log(payload)
       return ({
         ...state,
         validationsErrors: payload.errors,
@@ -63,7 +62,6 @@ const authReducer = createReducer(
   }),
   on(loginFailureAction,
     (state, payload: { errors: BackendErrorsInterface }): AuthStateInterface => {
-      console.log(payload)
       return ({
         ...state,
         validationsErrors: payload.errors,
