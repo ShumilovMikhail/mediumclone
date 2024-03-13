@@ -11,6 +11,7 @@ import { ErrorMessageModule } from "../error-message/error-message.module";
 import { LoadingModule } from "../loading/loading.module";
 import { PaginationModule } from "../pagination/pagination.module";
 import { ArticleComponent } from "./components/article/article.component";
+import { TagListModule } from "../tag-list/tag-list.module";
 
 @NgModule({
   declarations: [FeedComponent, ArticleComponent],
@@ -21,7 +22,8 @@ import { ArticleComponent } from "./components/article/article.component";
     RouterModule,
     ErrorMessageModule,
     LoadingModule,
-    PaginationModule
+    PaginationModule,
+    TagListModule
   ],
   exports: [FeedComponent]
 })
