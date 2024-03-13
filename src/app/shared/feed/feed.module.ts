@@ -10,10 +10,19 @@ import { reducers } from "./store/reducers";
 import { ErrorMessageModule } from "../error-message/error-message.module";
 import { LoadingModule } from "../loading/loading.module";
 import { PaginationModule } from "../pagination/pagination.module";
+import { ArticleComponent } from "./components/article/article.component";
 
 @NgModule({
-  declarations: [FeedComponent],
-  imports: [CommonModule, EffectsModule.forFeature([GetFeedEffect]), StoreModule.forFeature('feed', reducers), RouterModule, ErrorMessageModule, LoadingModule, PaginationModule],
+  declarations: [FeedComponent, ArticleComponent],
+  imports: [
+    CommonModule,
+    EffectsModule.forFeature([GetFeedEffect]),
+    StoreModule.forFeature('feed', reducers),
+    RouterModule,
+    ErrorMessageModule,
+    LoadingModule,
+    PaginationModule
+  ],
   exports: [FeedComponent]
 })
 export class FeedModule { }

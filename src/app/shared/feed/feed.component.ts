@@ -52,7 +52,6 @@ export class FeedComponent implements OnInit {
       offset,
       ...parsedUrl.query
     });
-    console.log(stringifyUrl)
     this.store.dispatch(getFeedAction({ url: `${parsedUrl.url}?${stringifyUrl}` }));
   };
 
