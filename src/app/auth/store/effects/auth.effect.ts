@@ -6,6 +6,7 @@ import { tap } from "rxjs";
 import { registerSuccessAction } from "../actions/register.action";
 import { loginSuccessAction } from "../actions/login.action";
 import { PersistanceService } from "../../../shared/services/persistance.service";
+import { PersistanceKeys } from "../../../shared/types/persistanceKeys";
 
 @Injectable()
 export class AuthEffect {
@@ -13,7 +14,7 @@ export class AuthEffect {
   redirectAfterAuth$ = createEffect(() => this.actions$.pipe(
     ofType(registerSuccessAction, loginSuccessAction),
     tap(({ currentUser }) => {
-      this.persistanceService.set('accessToken', currentUser.token);
+      this.persistanceService.set(PersistanceKeys.TOKEN, currentUser.token);
       this.router.navigate(['../'], { relativeTo: this.route });
     })
   ), {

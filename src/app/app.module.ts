@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { EffectsModule } from '@ngrx/effects';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
-import { EffectsModule } from '@ngrx/effects';
 import { TopBarModule } from './shared/top-bar/top-bar.module';
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { AuthInterceptor } from './shared/services/auth-interceptor.service';
+import { GlobalFeedModule } from './global-feed/global-feed.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { AuthInterceptor } from './shared/services/auth-interceptor.service';
     AuthModule,
     EffectsModule.forRoot([]),
     TopBarModule,
+    GlobalFeedModule
   ],
   providers: [provideHttpClient(withInterceptors([AuthInterceptor]))],
   bootstrap: [AppComponent]

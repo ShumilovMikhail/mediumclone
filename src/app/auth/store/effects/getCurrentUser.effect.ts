@@ -6,6 +6,7 @@ import { getCurrentUserAction, getCurrentUserFailureAction, getCurrentUserSucces
 import { AuthService } from "../../services/auth.service";
 import { CurrentUserInterface } from "../../../shared/types/currentUser.interface";
 import { PersistanceService } from "../../../shared/services/persistance.service";
+import { PersistanceKeys } from "../../../shared/types/persistanceKeys";
 
 @Injectable()
 export class GetCurrentUserEffect {
@@ -14,7 +15,7 @@ export class GetCurrentUserEffect {
     ofType(getCurrentUserAction),
 
     switchMap(() => {
-      const token = this.persistanceService.get('accessToken');
+      const token = this.persistanceService.get(PersistanceKeys.TOKEN);
       if (!token) {
         return of(getCurrentUserFailureAction());
       };
