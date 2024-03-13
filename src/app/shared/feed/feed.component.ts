@@ -7,6 +7,7 @@ import { getFeedAction } from "./store/actions/getFeed.actions";
 import { errorSelector, feedSelector, isLoadingSelector } from "./store/selectors";
 import { GetFeedResponseInterface } from "./types/getFeedResponse.interface";
 import { environment } from "../../../environments/environment.development";
+import queryString from "query-string";
 
 @Component({
   selector: 'mc-feed',
@@ -44,8 +45,15 @@ export class FeedComponent implements OnInit {
   }
 
   private fetchFeed(): void {
-    const offset = this.currentPage * this.limit - this.limit
-    this.store.dispatch(getFeedAction({ url: this.apiUrl + `offset="${offset}"&limit="${this.limit}"` }));
+    const offset = this.currentPage * this.limit - this.limit;
+    const parsedUrl = queryString.parseUrl(this.apiUrl);
+    const stringifyUrl = queryString.stringify({
+      limit: this.limit,
+      offset,
+      ...parsedUrl.query
+    });
+    console.log(stringifyUrl)
+    this.store.dispatch(getFeedAction({ url: `${parsedUrl.url}?${stringifyUrl}` }));
   };
 
 };
