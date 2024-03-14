@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from "@angular/core";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { Store } from "@ngrx/store";
-import { Observable } from "rxjs";
+import { Observable, Subscription } from "rxjs";
 
 import { getFeedAction } from "./store/actions/getFeed.actions";
 import { errorSelector, feedSelector, isLoadingSelector } from "./store/selectors";
@@ -14,7 +14,7 @@ import queryString from "query-string";
   templateUrl: './feed.component.html',
   styleUrl: './feed.component.scss'
 })
-export class FeedComponent implements OnInit {
+export class FeedComponent implements OnInit, OnChanges {
   @Input('apiUrl') apiUrl: string;
   isLoading$: Observable<boolean>;
   feed$: Observable<GetFeedResponseInterface | null>;
@@ -22,12 +22,20 @@ export class FeedComponent implements OnInit {
   baseUrl: string;
   currentPage: number;
   limit = environment.limitArticles;
+  isApiUrlChanged: boolean
 
   constructor(private store: Store, private router: Router, private route: ActivatedRoute) { };
 
   ngOnInit(): void {
     this.initializeValues();
     this.initializeListeners();
+  };
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.isApiUrlChanged = !changes['apiUrl'].firstChange && changes['apiUrl'].currentValue !== changes['apiUrl'].previousValue;
+    if (this.isApiUrlChanged) {
+      this.fetchFeed()
+    };
   };
 
   private initializeValues(): void {
@@ -39,10 +47,10 @@ export class FeedComponent implements OnInit {
 
   private initializeListeners() {
     this.route.queryParams.subscribe((queryParams: Params) => {
-      this.currentPage = +queryParams['page'] || 1
+      this.currentPage = +queryParams['page'] || 1;
       this.fetchFeed();
-    })
-  }
+    });
+  };
 
   private fetchFeed(): void {
     const offset = this.currentPage * this.limit - this.limit;

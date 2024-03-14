@@ -1,11 +1,13 @@
 import { NgModule } from "@angular/core";
-import { PopularTagsComponent } from "./popular-tags.component";
 import { CommonModule } from "@angular/common";
-import { StoreModule } from "@ngrx/store";
-import { reducers } from "./store/reducers";
-import { EffectsModule } from "@ngrx/effects";
-import { GetPopularTagsEffect } from "./store/effects/getPopularTags.effect";
 import { HttpClientModule } from "@angular/common/http";
+import { RouterModule } from "@angular/router";
+import { StoreModule } from "@ngrx/store";
+import { EffectsModule } from "@ngrx/effects";
+
+import { PopularTagsComponent } from "./popular-tags.component";
+import { reducers } from "./store/reducers";
+import { GetPopularTagsEffect } from "./store/effects/getPopularTags.effect";
 import { LoadingModule } from "../loading/loading.module";
 import { ErrorMessageModule } from "../error-message/error-message.module";
 
@@ -17,7 +19,8 @@ import { ErrorMessageModule } from "../error-message/error-message.module";
     EffectsModule.forFeature([GetPopularTagsEffect]),
     HttpClientModule,
     LoadingModule,
-    ErrorMessageModule
+    ErrorMessageModule,
+    RouterModule
   ],
   exports: [PopularTagsComponent]
 })

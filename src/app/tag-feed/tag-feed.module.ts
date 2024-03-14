@@ -9,7 +9,7 @@ import { PopularTagsModule } from "../shared/popular-tags/popular-tags.module";
 import { FeedTogglerModule } from "../shared/feed-toggler/feed-toggler.module";
 
 const routes: Routes = [
-  { path: 'feed/:tag', component: TagFeedComponent, pathMatch: 'full' }
+  { path: 'tags/:tag', component: TagFeedComponent }
 ]
 
 @NgModule({
