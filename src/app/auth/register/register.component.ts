@@ -4,7 +4,6 @@ import { Store } from '@ngrx/store';
 import { registerAction } from '../store/actions/register.action';
 import { Observable } from 'rxjs';
 import { isSubmitSelector, validationErrorsSelector } from '../store/selectors';
-import { AuthService } from '../services/auth.service';
 import { RegisterRequestInterface } from '../types/registerRequest.interface';
 import { BackendErrorsInterface } from '../types/backendErrors.interface';
 

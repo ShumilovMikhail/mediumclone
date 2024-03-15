@@ -6,7 +6,7 @@ import { BackendErrorsInterface } from "../../auth/types/backendErrors.interface
   templateUrl: './backend-errors-messages.component.html',
   styleUrl: './backend-errors-messages.component.scss'
 })
-export class BackendErrorsMessages implements OnInit {
+export class BackendErrorsMessagesComponent implements OnInit {
   @Input() backendErrors!: BackendErrorsInterface
   errorsMessages: string[] = []
 
@@ -14,6 +14,8 @@ export class BackendErrorsMessages implements OnInit {
     if (!this.backendErrors) {
       return
     }
+
+    console.log(this.backendErrors)
 
     switch (typeof this.backendErrors) {
       case 'object':

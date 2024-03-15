@@ -12,13 +12,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { EffectsModule } from '@ngrx/effects';
 import { RegisterEffect } from './store/effects/register.effect';
-import { BackendErrorsMessages } from '../shared/backend-errors-messages/backend-errors-messages.component';
 import { LoginEffect } from './store/effects/login.effect';
 import { AuthEffect } from './store/effects/auth.effect';
 import { GetCurrentUserEffect } from './store/effects/getCurrentUser.effect';
+import { BackendErrorsMessagesModule } from '../shared/backend-errors-messages/backend-errors-messages.module';
 
 @NgModule({
-  declarations: [RegisterComponent, LoginComponent, BackendErrorsMessages],
+  declarations: [RegisterComponent, LoginComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -30,7 +30,8 @@ import { GetCurrentUserEffect } from './store/effects/getCurrentUser.effect';
       logOnly: !isDevMode(),
     }),
     StoreModule.forFeature('auth', reducers),
-    EffectsModule.forFeature([RegisterEffect, LoginEffect, AuthEffect, GetCurrentUserEffect])
+    EffectsModule.forFeature([RegisterEffect, LoginEffect, AuthEffect, GetCurrentUserEffect]),
+    BackendErrorsMessagesModule
   ],
   providers: [AuthService]
 })

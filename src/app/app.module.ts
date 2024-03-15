@@ -15,6 +15,7 @@ import { GlobalFeedModule } from './global-feed/global-feed.module';
 import { YourFeedModule } from './your-feed/your-feed.module';
 import { TagFeedModule } from './tag-feed/tag-feed.module';
 import { ArticleModule } from './article/article.module';
+import { CreateArticleModule } from './create-article/create-article.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ArticleModule } from './article/article.module';
     GlobalFeedModule,
     YourFeedModule,
     TagFeedModule,
-    ArticleModule
+    CreateArticleModule,
+    ArticleModule,
   ],
   providers: [provideHttpClient(withInterceptors([AuthInterceptor]))],
   bootstrap: [AppComponent]
