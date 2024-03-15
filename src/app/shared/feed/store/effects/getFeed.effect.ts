@@ -9,7 +9,7 @@ import { GetFeedResponseInterface } from "../../types/getFeedResponse.interface"
 @Injectable()
 export class GetFeedEffect {
 
-  redirectAfterAuth$ = createEffect(() => this.actions$.pipe(
+  getFeed$ = createEffect(() => this.actions$.pipe(
     ofType(getFeedAction),
 
     switchMap(({ url }) => {
