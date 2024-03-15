@@ -12,13 +12,12 @@
             {{article.createdAt | date:"MMMM d, YYYY"}}
           </span>
         </div>
-        <!-- Протестить после добавления фичи создания поста -->
         <span *ngIf="isAuthor$ | async">
           <a [routerLink]="['/articles', article.slug,'/edit']" class="btn btn-outline-secondary btn-sm">
             <i class="ion-edit"></i>
-            Edit
+            Edit Article
           </a>
-          DELETE BUTTON
+          <button class="btn btn-outline-danger btn-sm" (click)="deleteArticle()">Delete Article</button>
         </span>
       </div>
     </div>

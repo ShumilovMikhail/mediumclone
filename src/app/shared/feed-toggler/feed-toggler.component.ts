@@ -17,6 +17,5 @@ export class FeedTogglerComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoggedIn$ = this.store.select(isLoggedInSelector);
-    console.log(this.tagName)
   };
 };

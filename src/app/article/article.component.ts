@@ -1,11 +1,11 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Store } from "@ngrx/store";
-import { Observable, Subscription, combineLatestWith, map } from "rxjs";
+import { Observable, Subscription, combineLatestWith, map, take } from "rxjs";
 
 import { ArticleInterface } from "../shared/types/article.interface";
 import { articleSelector, errorSelector, isLoadingSelector } from "./store/selectors";
-import { getArticleAction } from "./store/actions/getFeed.actions";
+import { deleteArticleAction, getArticleAction } from "./store/actions/getArticle.actions";
 import { currentUserSelector } from "../auth/store/selectors";
 import { CurrentUserInterface } from "../shared/types/currentUser.interface";
 
@@ -23,7 +23,11 @@ export class ArticleComponent implements OnInit, OnDestroy {
   error$: Observable<string>;
   isAuthor$: Observable<boolean> = this.store.select(articleSelector).pipe(
     combineLatestWith(this.store.select(currentUserSelector)),
+    take(1),
     map(([article, user]: [ArticleInterface | null, CurrentUserInterface | null]) => {
+      if (!article || !user) {
+        return false
+      }
       return article.author.username === user.username
     })
   );;
@@ -38,6 +42,10 @@ export class ArticleComponent implements OnInit, OnDestroy {
     this.initializeValues();
     this.initializeListeners();
     this.fetchArticle();
+  };
+
+  deleteArticle(): void {
+    this.store.dispatch(deleteArticleAction({ slug: this.slug }));
   };
 
   private initializeListeners(): void {
@@ -58,7 +66,6 @@ export class ArticleComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.articleSubscription.unsubscribe();
-
   };
 
 };

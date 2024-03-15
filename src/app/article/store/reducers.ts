@@ -2,7 +2,7 @@ import { Action, createReducer, on } from "@ngrx/store";
 import { routerNavigationAction } from "@ngrx/router-store";
 
 import { ArticleStateInterface } from "../types/articleState.interface";
-import { getArticleAction, getArticleFailureAction, getArticleSuccessAction } from "./actions/getFeed.actions";
+import { getArticleAction, getArticleFailureAction, getArticleSuccessAction } from "./actions/getArticle.actions";
 import { ArticleInterface } from "../../shared/types/article.interface";
 
 const initialValue: ArticleStateInterface = {

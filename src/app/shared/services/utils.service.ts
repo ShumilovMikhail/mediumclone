@@ -6,7 +6,6 @@ import { Injectable } from "@angular/core";
 export class UtilsService {
 
   range(start: number, end: number): number[] {
-    console.log(end)
     return [...Array(end).keys()].map((el) => el + start);
   };
 
