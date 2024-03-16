@@ -1,0 +1,8 @@
+<button class="btn btn-sm btn-outline-primary" (click)="onClick()" [ngClass]="{
+  'btn-outline-primary': !isFavorited,
+  'btn-primary': isFavorited
+}">
+  <i class="ion-heart"></i>
+  <ng-content select=".favorited" *ngIf="!isFavorited"></ng-content>
+  <ng-content select=".unfavorited" *ngIf="isFavorited"></ng-content>
+</button>

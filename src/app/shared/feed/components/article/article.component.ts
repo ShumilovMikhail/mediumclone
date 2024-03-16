@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 
 import { ArticleInterface } from "../../../types/article.interface";
 
@@ -8,5 +8,5 @@ import { ArticleInterface } from "../../../types/article.interface";
   styleUrl: './article.component.scss'
 })
 export class ArticleComponent {
-  @Input('article') article: ArticleInterface
+  @Input('article') article: ArticleInterface;
 }

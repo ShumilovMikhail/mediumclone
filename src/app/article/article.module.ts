@@ -11,6 +11,7 @@ import { LoadingModule } from "../shared/loading/loading.module";
 import { ErrorMessageModule } from "../shared/error-message/error-message.module";
 import { TagListModule } from "../shared/tag-list/tag-list.module";
 import { DeleteArticleEffect } from "./store/effects/deleteArticle.effect";
+import { AddToFavoritesModule } from "../shared/add-to-favorites/add-to-favorites.module";
 
 const routes: Routes = [
   { path: 'articles/:slug', component: ArticleComponent }
@@ -25,7 +26,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     LoadingModule,
     ErrorMessageModule,
-    TagListModule
+    TagListModule,
   ]
 })
 export class ArticleModule { }

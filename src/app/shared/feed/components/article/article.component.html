@@ -10,7 +10,12 @@
       <span class="date">{{article.createdAt | date:"MMMM d, YYYY"}}</span>
     </div>
     <div class="pull-xs-right">
-      ADD TO FAVORITES
+      <mc-add-to-favorites [isFavorited]="article.favorited" [slug]="article.slug">
+        <span class="favorited">{{article.favorited ? article.favoritesCount - 1 :
+          article.favoritesCount}}</span>
+        <span class="unfavorited">{{article.favorited ? article.favoritesCount : article.favoritesCount +
+          1}}</span>
+      </mc-add-to-favorites>
     </div>
   </div>
   <a [routerLink]="['/articles', article.slug]" class="preview-link">
