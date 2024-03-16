@@ -7,7 +7,8 @@ import { ArticleInputInterface } from "../shared/types/articleInput.interface";
 import { errorsSelector, getArticleSelector, isLoadingSelector, isSubmittingSelector } from "./store/selectors";
 import { ArticleInterface } from "../shared/types/article.interface";
 import { BackendErrorsInterface } from "../auth/types/backendErrors.interface";
-import { editArticleAction, getArticleAction } from "./store/actions/editArticle.action";
+import { editArticleAction } from "./store/actions/editArticle.action";
+import { getArticleAction } from "./store/actions/getArticle.action";
 
 @Component({
   selector: 'mc-article-edit',

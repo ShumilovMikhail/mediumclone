@@ -5,6 +5,7 @@ import { catchError, map, of, switchMap, tap } from "rxjs";
 
 import { CreateArticleService } from "../../services/createArticle.service";
 import { createArticleAction, createArticleFailureAction, createArticleSuccessAction } from "../actions/createArticle.action";
+import { HttpErrorResponse } from "@angular/common/http";
 
 @Injectable()
 export class CreateArticleEffect {
@@ -18,8 +19,8 @@ export class CreateArticleEffect {
         map((article) => {
           return createArticleSuccessAction({ article });
         }),
-        catchError(({ error }) => {
-          return of(createArticleFailureAction({ errors: error.errors }));
+        catchError((response) => {
+          return of(createArticleFailureAction({ errors: response.errors }));
         })
       );
     })

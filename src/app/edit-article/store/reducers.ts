@@ -1,18 +1,19 @@
 import { Action, createReducer, on } from "@ngrx/store";
 
 import { EditArticleStateInterface } from "../types/editArticleState.interface";
-import { editArticleAction, editArticleFailureAction, editArticleSuccessAction, getArticleAction, getArticleFailureAction, getArticleSuccessAction } from "./actions/editArticle.action";
+import { editArticleAction, editArticleFailureAction, editArticleSuccessAction } from "./actions/editArticle.action";
 import { ArticleInterface } from "../../shared/types/article.interface";
 import { ArticleInputInterface } from "../../shared/types/articleInput.interface";
+import { getArticleAction, getArticleFailureAction, getArticleSuccessAction } from "./actions/getArticle.action";
 
-const initialValue: EditArticleStateInterface = {
+const initialState: EditArticleStateInterface = {
   isLoading: false,
   errors: null,
   article: null,
   isSubmitting: false
 };
 
-const createArticleReducer = createReducer(initialValue,
+const createArticleReducer = createReducer(initialState,
   on(editArticleAction, (state, payload: { articleInput: ArticleInputInterface, slug: string }): EditArticleStateInterface => {
     return ({
       ...state,

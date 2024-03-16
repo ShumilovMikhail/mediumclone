@@ -5,13 +5,13 @@ import { FeedStateInterface } from "../types/feedState.interface";
 import { getFeedAction, getFeedFailureAction, getFeedSuccessAction } from "./actions/getFeed.actions";
 import { GetFeedResponseInterface } from "../types/getFeedResponse.interface";
 
-const initialValue: FeedStateInterface = {
+const initialState: FeedStateInterface = {
   isLoading: false,
   error: null,
   data: null
 };
 
-const feedReducer = createReducer(initialValue,
+const feedReducer = createReducer(initialState,
   on(getFeedAction, (state): FeedStateInterface => {
     return ({
       ...state,
@@ -34,7 +34,7 @@ const feedReducer = createReducer(initialValue,
       error: 'Feed Error'
     });
   }),
-  on(routerNavigationAction, (state): FeedStateInterface => initialValue)
+  on(routerNavigationAction, (state): FeedStateInterface => initialState)
 );
 
 

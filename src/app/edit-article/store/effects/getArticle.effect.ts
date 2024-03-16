@@ -1,11 +1,10 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { catchError, map, of, switchMap } from "rxjs";
+import { catchError, from, map, of, switchMap } from "rxjs";
 
-
-import { getArticleAction, getArticleSuccessAction, getArticleFailureAction } from "../actions/editArticle.action";
 import { SharedArticleService } from "../../../shared/services/article.service";
+import { getArticleAction, getArticleFailureAction, getArticleSuccessAction } from "../actions/getArticle.action";
 
 @Injectable()
 export class GetArticleEffect {

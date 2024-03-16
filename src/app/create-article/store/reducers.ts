@@ -5,12 +5,12 @@ import { ArticleInputInterface } from "../../shared/types/articleInput.interface
 import { ArticleInterface } from "../../shared/types/article.interface";
 import { BackendErrorsInterface } from "../../auth/types/backendErrors.interface";
 
-const initialValue: CreateArticleStateInterface = {
+const initialState: CreateArticleStateInterface = {
   isLoading: false,
   errors: null
 };
 
-const createArticleReducer = createReducer(initialValue,
+const createArticleReducer = createReducer(initialState,
   on(createArticleAction, (state, payload: { articleInput: ArticleInputInterface }): CreateArticleStateInterface => {
     return ({
       ...state,

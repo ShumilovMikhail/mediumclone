@@ -24,4 +24,8 @@ export class PersistanceService {
       return null;
     };
   };
+
+  remove(key: PersistanceKeys): void {
+    localStorage.removeItem(key);
+  };
 };

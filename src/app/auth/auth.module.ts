@@ -16,6 +16,8 @@ import { LoginEffect } from './store/effects/login.effect';
 import { AuthEffect } from './store/effects/auth.effect';
 import { GetCurrentUserEffect } from './store/effects/getCurrentUser.effect';
 import { BackendErrorsMessagesModule } from '../shared/backend-errors-messages/backend-errors-messages.module';
+import { UpdateCurrentUserEffect } from './store/effects/updateCurrentUser.effect';
+import { LogoutEffect } from './store/effects/logout.effect';
 
 @NgModule({
   declarations: [RegisterComponent, LoginComponent],
@@ -30,7 +32,7 @@ import { BackendErrorsMessagesModule } from '../shared/backend-errors-messages/b
       logOnly: !isDevMode(),
     }),
     StoreModule.forFeature('auth', reducers),
-    EffectsModule.forFeature([RegisterEffect, LoginEffect, AuthEffect, GetCurrentUserEffect]),
+    EffectsModule.forFeature([RegisterEffect, LoginEffect, AuthEffect, GetCurrentUserEffect, UpdateCurrentUserEffect, LogoutEffect]),
     BackendErrorsMessagesModule
   ],
   providers: [AuthService]

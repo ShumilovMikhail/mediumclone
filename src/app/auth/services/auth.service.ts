@@ -3,11 +3,13 @@ import { HttpClient } from "@angular/common/http";
 
 import { RegisterRequestInterface } from "../types/registerRequest.interface";
 import { CurrentUserInterface } from "../../shared/types/currentUser.interface";
-import { Observable, catchError, map, tap } from "rxjs";
+import { Observable, map } from "rxjs";
 import { environment } from "../../../environments/environment.development";
 import { AuthResponseInterface } from "../types/authResponse.interface";
-import { AuthModule } from "../auth.module";
 import { LoginRequestInterface } from "../types/loginRequest.interface";
+import { CurrentUserInputInterface } from "../../shared/types/currentUserInput.interface";
+import { UpdateCurrentUserResponseInterface } from "../types/updateCurrentUserResponse.interface";
+import { updateCurrentUserRequestInterface } from "../types/updateCurrentUserRequest.interface";
 
 @Injectable()
 export class AuthService {
@@ -34,7 +36,13 @@ export class AuthService {
   public getCurrentUser(): Observable<CurrentUserInterface> {
     return this.http.get<AuthResponseInterface>(this.userAPI).pipe(
       map(({ user }) => user)
-    )
+    );
+  };
+
+  public updateCurrentUser(currentUserInput: updateCurrentUserRequestInterface): Observable<CurrentUserInterface> {
+    return this.http.put<UpdateCurrentUserResponseInterface>(this.userAPI, currentUserInput).pipe(
+      map(({ user }) => user)
+    );
   };
 
 };

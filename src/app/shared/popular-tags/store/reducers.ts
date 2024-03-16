@@ -4,14 +4,14 @@ import { PopularTagsStateInterface } from "../types/popularTagsState.interface";
 import { getPopularTagsAction, getPopularTagsFailureAction, getPopularTagsSuccessAction } from "./actions/getPopularTags.action";
 import { PopularTagType } from "../../types/popularTag.type";
 
-const initialValue: PopularTagsStateInterface = {
+const initialState: PopularTagsStateInterface = {
   isLoading: false,
   popularTags: null,
   errors: null
 };
 
 
-const popularTagsReducer = createReducer(initialValue,
+const popularTagsReducer = createReducer(initialState,
   on(getPopularTagsAction, (state): PopularTagsStateInterface => {
     return ({
       ...state,

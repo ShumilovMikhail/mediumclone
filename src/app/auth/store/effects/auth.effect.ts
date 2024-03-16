@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Router } from "@angular/router";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { tap } from "rxjs";
 
@@ -15,13 +15,13 @@ export class AuthEffect {
     ofType(registerSuccessAction, loginSuccessAction),
     tap(({ currentUser }) => {
       this.persistanceService.set(PersistanceKeys.TOKEN, currentUser.token);
-      this.router.navigate(['../'], { relativeTo: this.route });
+      this.router.navigate(['/']);
     })
   ), {
     dispatch: false
   });
 
-  constructor(private actions$: Actions, private route: ActivatedRoute, private router: Router, private persistanceService: PersistanceService) { }
+  constructor(private actions$: Actions, private router: Router, private persistanceService: PersistanceService) { }
 }
 
 // hello world

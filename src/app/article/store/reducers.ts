@@ -5,13 +5,13 @@ import { ArticleStateInterface } from "../types/articleState.interface";
 import { getArticleAction, getArticleFailureAction, getArticleSuccessAction } from "./actions/getArticle.actions";
 import { ArticleInterface } from "../../shared/types/article.interface";
 
-const initialValue: ArticleStateInterface = {
+const initialState: ArticleStateInterface = {
   isLoading: false,
   error: null,
   article: null
 };
 
-const articleReducer = createReducer(initialValue,
+const articleReducer = createReducer(initialState,
   on(getArticleAction, (state): ArticleStateInterface => {
     return ({
       ...state,
@@ -34,7 +34,7 @@ const articleReducer = createReducer(initialValue,
       error: 'Article Error'
     });
   }),
-  on(routerNavigationAction, (state): ArticleStateInterface => initialValue)
+  on(routerNavigationAction, (state): ArticleStateInterface => initialState)
 );
 
 

@@ -6,6 +6,8 @@ import { CurrentUserInterface } from "../../shared/types/currentUser.interface";
 import { BackendErrorsInterface } from "../types/backendErrors.interface";
 import { loginAction, loginFailureAction, loginSuccessAction } from "./actions/login.action";
 import { getCurrentUserAction, getCurrentUserFailureAction, getCurrentUserSuccessAction } from "./actions/getCurrentUser.action";
+import { updateCurrentUserSuccessAction } from "./actions/updateCurrentUser.action";
+import { logoutAction } from "./actions/sync.action";
 
 const initialState: AuthStateInterface = {
   currentUser: null,
@@ -69,6 +71,7 @@ const authReducer = createReducer(
       })
     }
   ),
+
   on(getCurrentUserAction, (state): AuthStateInterface => {
     return ({
       ...state,
@@ -87,6 +90,18 @@ const authReducer = createReducer(
     return ({
       ...state,
       isLoading: false
+    });
+  }),
+
+  on(updateCurrentUserSuccessAction, (state, payload: { currentUser: CurrentUserInterface }): AuthStateInterface => {
+    return ({
+      ...state,
+      currentUser: payload.currentUser
+    });
+  }),
+  on(logoutAction, (state): AuthStateInterface => {
+    return ({
+      ...initialState
     });
   })
 );
