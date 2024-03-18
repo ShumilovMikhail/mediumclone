@@ -1,0 +1,20 @@
+<div class="profile-page" *ngIf="userProfile">
+  <div class="user-info">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-10 offset-md-1">
+          <img [src]="userProfile.image" alt="user-image">
+          <h4>{{userProfile.username}}</h4>
+          <p>{{userProfile.bio}}</p>
+          <div>
+            FOLLOW USER BUTTON
+            <a [routerLink]="['/settings']" class="btn btn-sm btn-outline-secondary action-btn"
+              *ngIf="isCurrentUserProfile$ | async">
+              Edit profile settings</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <mc-user-profile-feed [userProfile]="userProfile"></mc-user-profile-feed>
+</div>
