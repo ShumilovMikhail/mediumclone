@@ -1,0 +1,7 @@
+<button class="btn btn-sm action-btn" [ngClass]="{
+  'btn-secondary' : isFollow,
+  'btn-outline-secondary': !isFollow,
+}" (click)="onClick()">
+  <i class="ion-plus-round"></i>
+  {{isFollow ? 'Unfollow' : 'Follow'}} {{username}}
+</button>

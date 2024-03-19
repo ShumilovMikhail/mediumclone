@@ -10,6 +10,7 @@ import { GetUserProfileEffect } from "./store/effects/getUserProfile.effect";
 import { reducers } from "./store/reducers";
 import { UserProfileFeedComponent } from "./components/user-profile-feed/user-profile-feed.component";
 import { FeedModule } from "../shared/feed/feed.module";
+import { FollowButtonModule } from "../shared/follow-button/follow-button.module";
 
 const routes: Routes = [
   { path: 'profiles/:slug', component: UserProfileComponent },
@@ -24,7 +25,8 @@ const routes: Routes = [
     HttpClientModule,
     EffectsModule.forFeature([GetUserProfileEffect]),
     StoreModule.forFeature('userProfile', reducers),
-    FeedModule
+    FeedModule,
+    FollowButtonModule
   ]
 })
 export class UserProfileModule { }

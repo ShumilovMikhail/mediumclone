@@ -7,7 +7,8 @@
           <h4>{{userProfile.username}}</h4>
           <p>{{userProfile.bio}}</p>
           <div>
-            FOLLOW USER BUTTON
+            <mc-follow-button *ngIf="!(isCurrentUserProfile$ | async)" [isFollow]="userProfile.following"
+              [slug]="userProfile.username" [username]="userProfile.username"></mc-follow-button>
             <a [routerLink]="['/settings']" class="btn btn-sm btn-outline-secondary action-btn"
               *ngIf="isCurrentUserProfile$ | async">
               Edit profile settings</a>
